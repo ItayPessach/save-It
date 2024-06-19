@@ -66,13 +66,13 @@ export default function TabLayout() {
             />
           ),
         }}
-        listeners={{
-          // TODO: Remove After implementations
-          tabPress: (e) => {
-            // Prevent default action
-            e.preventDefault();
-          },
-        }}
+        // listeners={{
+        //   // TODO: Remove After implementations
+        //   tabPress: (e) => {
+        //     // Prevent default action
+        //     e.preventDefault();
+        //   },
+        // }}
       />
     </Tabs>
   );

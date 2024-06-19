@@ -1,8 +1,8 @@
 import { useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 
-export default function Collection() {
-  const { name } = useLocalSearchParams<{ name: string }>();
+export default function Collection({ route }: { route: any }) {
+  const { name } = route.params;
 
   return (
     <View

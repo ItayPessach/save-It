@@ -1,26 +1,25 @@
-import { Collection } from "@/common/types/collection.type";
-import { Link } from "expo-router";
-import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import { Collection as CollctionType } from "@/common/types/collection.type";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-const CollectionCard = ({ name, thumbnail, count }: Collection) => {
+const CollectionCard = ({ name, thumbnail, count }: CollctionType) => {
+  const navigation = useNavigation();
+
+  const navigateToCollection = (name: string) => {
+    navigation.navigate("Collection", { name });
+  };
+
   return (
     <View style={styles.container}>
-      <Link
-        href={{
-          pathname: "/collection/[name]",
-          params: { name },
-        }}
-        asChild
-      >
-        <Pressable>
-          <Image
-            source={thumbnail as any /* will be a url which is a string */}
-            style={styles.image}
-          />
-          <Text style={styles.text}>{name}</Text>
-          <Text style={styles.text}>{count}</Text>
-        </Pressable>
-      </Link>
+      <TouchableOpacity onPress={() => navigateToCollection(name)}>
+        <Image
+          source={thumbnail as any /* will be a url which is a string */}
+          style={styles.image}
+        />
+        <Text style={styles.text}>{name}</Text>
+        <Text style={styles.text}>{count}</Text>
+      </TouchableOpacity>
+      {/* </Link> */}
     </View>
   );
 };
